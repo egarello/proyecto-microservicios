@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS usuarios_db;
+CREATE DATABASE IF NOT EXISTS proyectofacultad;

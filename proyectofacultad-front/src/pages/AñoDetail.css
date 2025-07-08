@@ -1,0 +1,73 @@
+.materia-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100vw;
+}
+
+.materia-content {
+  display: flex;
+  justify-content: center; /* Cambiado para centrar horizontalmente el contenido */
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.materia-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Máximo 4 columnas por fila */
+  gap: 20px; /* Espaciado entre las cards */
+  padding: 20px;
+  background-color: #6b6b6b;
+  border-radius: 8px;
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  max-width: 1200px; /* Limita el ancho máximo para centrado */
+  justify-content: center; /* Centra las columnas dentro del grid */
+}
+
+@media (max-width: 768px) {
+  .materia-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .materia-list {
+    grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+  }
+}
+
+.materia-form-container {
+  flex: 1;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.materia-form-container button {
+  margin-bottom: 20px;
+}
+
+.materia-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.materia-form div {
+  margin-bottom: 10px;
+}
+
+.materia-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.materia-form input,
+.materia-form textarea,
+.materia-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

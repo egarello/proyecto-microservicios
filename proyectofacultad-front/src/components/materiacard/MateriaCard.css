@@ -1,0 +1,24 @@
+.materia-card {
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.materia-card:hover {
+    transform: scale(1.05);
+}
+  
+.materia-card h2 {
+    margin-bottom: 10px;
+}
+  
+.materia-card p {
+    font-size: 14px;
+    color: #555;
+}
