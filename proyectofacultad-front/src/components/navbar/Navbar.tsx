@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
+  const isLoggedIn = !!localStorage.getItem('token');
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -19,9 +20,17 @@ const Navbar: React.FC = () => {
         <li className="navbar-item">
           <Link to="/services" className="navbar-link">Servicios</Link>
         </li>
-        <li className="navbar-item">
-          <Link to="/contact" className="navbar-link">Contacto</Link>
-        </li>
+        {isLoggedIn ? (
+          <li className="navbar-item">
+            <Link to="/profile" className="navbar-link">Mi perfil</Link>
+          </li>
+        ) : (
+          <li className="navbar-item">
+            <Link to="/login" className="navbar-link">Acceder</Link>
+          </li>
+        )
+
+        }
       </ul>
     </nav>
   );
