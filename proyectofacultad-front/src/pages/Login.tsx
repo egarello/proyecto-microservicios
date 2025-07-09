@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../components/layoutcomponent/Layout';
-
+import './Login.css'
 const Login: React.FC = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -10,9 +10,10 @@ const Login: React.FC = () => {
     }
     return(
         <Layout>
-            <div className="login-form">
-                <form onSubmit={handleSubmit}></form>
-                <div>
+            <div className="login-container">
+                <h1>Mi APP</h1>
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <div className="form-row">
                     <label htmlFor="username">User</label>
                     <input
                         id="username"
@@ -22,7 +23,7 @@ const Login: React.FC = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-row">
                     <label htmlFor="password">Contraseña</label>
                     <input 
                         id = "password"
@@ -30,9 +31,10 @@ const Login: React.FC = () => {
                         value = {password}
                         onChange = {e => setPassword(e.target.value)}
                         required
-                    /> 
-                    <button type="submit">Acceder</button>
+                    />  
                 </div>
+                <button type="submit">Acceder</button>
+                </form> 
             </div>
         </Layout>
     );
