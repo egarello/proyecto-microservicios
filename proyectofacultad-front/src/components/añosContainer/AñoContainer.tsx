@@ -24,7 +24,6 @@ const AñoContainer: React.FC = () => {
     const [promedio, setPromedio] = useState<number | null> (null);
     const [error, setError] = useState<string | null>(null);
 
-
     useEffect(()=> {
         const fetchData = async () => {
             try{
