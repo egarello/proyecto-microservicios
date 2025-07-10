@@ -11,7 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="users") //Esta tabla se llama users con el propósito de evitar problemas en la base de datos
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
