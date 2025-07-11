@@ -37,10 +37,10 @@ public class User {
         this.name = name;
     }
     public String getPass() {
-        return pass;
+        return this.password;
     }
     public void setPass(String pass) {
-        this.pass = pass;
+        this.password = pass;
     }
     public String getRol() {
         return rol;
@@ -53,6 +53,24 @@ public class User {
     }
     public void setListaMaterias(List<MateriaUsuario> listaMaterias) {
         this.listaMaterias = listaMaterias;
+    }
+    public String getLastname() {
+        return lastname;
+    }
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     
