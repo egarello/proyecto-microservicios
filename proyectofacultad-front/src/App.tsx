@@ -12,10 +12,7 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path="/about" element={<h1>Acerca de</h1>} />
-          <Route path="/services" element={<h1>Servicios</h1>} />
           <Route path="/" element={<AñoContainer />} />
-
           <Route path='/materias' element={<MateriaContainer />} />
           <Route path="/materia/:id" element={<MateriaDetail />} />
           <Route path="/anio/:nroAnio" element={<AñoDetail />} />

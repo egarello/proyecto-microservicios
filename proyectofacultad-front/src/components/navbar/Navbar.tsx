@@ -11,15 +11,6 @@ const Navbar: React.FC = () => {
         <Link to="/" className="navbar-link">Mi App</Link>
       </div>
       <ul className="navbar-links">
-        <li className="navbar-item">
-          <Link to="/" className="navbar-link">Inicio</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/about" className="navbar-link">Acerca de</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/services" className="navbar-link">Servicios</Link>
-        </li>
         {isLoggedIn ? (
           <li className="navbar-item">
             <Link to="/profile" className="navbar-link">Mi perfil</Link>
