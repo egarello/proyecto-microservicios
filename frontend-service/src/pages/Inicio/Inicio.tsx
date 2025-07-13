@@ -1,9 +1,9 @@
 import React from 'react';
-
+import NavBar from '../../components/NavBar/NavBar';
 const Inicio: React.FC = () => {
 
     return(
-        <div></div>
+        <NavBar></NavBar>
     );
 }
 
