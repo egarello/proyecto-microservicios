@@ -1,15 +1,27 @@
 import React, { useState } from 'react'
+import { login } from '../../services/AuthServices';
 
 const Login: React.FC = () => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
-    const handleSubmit = (e: React.FormEvent) => {
+    const [error,setError] = useState('');
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault(); 
-        //Acá tengo que hacer la validación de la entrada de usuario.
+        try{
+            const token = await login(username, password);
+            localStorage.setItem('token',token);
+            setError('');
+            console.log('Inicio de sesión exitoso. Token: ', token);
+        }catch(error){
+            if(error instanceof Error){
+                setError(error.message);
+            }
+            setError('Error desconocido durante el login');
+        }
     }
     return(
         <div className="login-container">
-            <form className="login-form" onSubmit={handleSubmit}>
+            <form className="login-form" onSubmit={handleLogin}>
                 <div className="login-form-inner-div">
                     <label htmlFor="username">Usuario</label>
                     <input 
@@ -31,6 +43,7 @@ const Login: React.FC = () => {
                     />
                 </div>
                 <button type="submit">Acceder</button>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
 
         </div>
