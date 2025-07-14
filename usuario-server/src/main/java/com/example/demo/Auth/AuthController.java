@@ -28,6 +28,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> createAuthToken(@RequestBody LoginRequest loginRequest) {
+        System.out.println("Login recibido: " + loginRequest.getUsername());
         try {
             authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
