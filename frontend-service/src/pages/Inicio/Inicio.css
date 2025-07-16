@@ -1,0 +1,24 @@
+.imagen-inicio {
+    width: 100vw;            /* Ocupa todo el ancho de la ventana */
+    background-image: url('src\assets\imagen-inicio.png'); /* Ruta de tu imagen */
+    background-size: cover;  /* Ajusta la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    margin: 0;               /* Elimina márgenes por defecto */
+    padding: 0;              /* Elimina padding por defecto */
+    max-height: 80vh;
+}
+
+.cards-inicio-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    margin: 10px 10px;
+    border:solid 1px black;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 5px 5px;
+    height: 200px;
+}

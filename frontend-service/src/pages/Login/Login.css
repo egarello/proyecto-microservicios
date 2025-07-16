@@ -1,0 +1,36 @@
+/* Login.css */
+.login-container {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex:1;
+  padding: 20px;
+}
+.login-content{
+  background-color: #1a1a1a;
+  width: 30%;
+  padding: 10px 10px;
+  border-radius: 8px;
+  margin-top: 100px;
+}
+.login-form-inner-div {
+  display: flex;          /* Activa flexbox */
+  align-items: center;    /* Centra verticalmente */
+  margin-bottom: 1rem;    /* Espaciado entre grupos */
+}
+
+.login-form-inner-div > label {
+  min-width: 120px;       /* Ancho mínimo fijo para todos los labels */
+  font-weight: bold;
+  color: #333;
+}
+
+.login-form-inner-div > input {
+  flex: 1;                /* Ocupa el resto del espacio */
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
