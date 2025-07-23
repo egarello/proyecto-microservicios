@@ -12,21 +12,23 @@ const Inicio: React.FC = () => {
             />
             <div className="cards-inicio-container">
                 <div className="card">
-                    <h3 className="card-titulo">Titulo card1</h3>
+                    <h3 className="card-titulo">Registrá tus materias</h3>
                     <p className="card-desc">
-                        Parrafo alkajlkjd asjndjdnf cdjn ajsnfl jdfnlas mfdnlna
+                        Subí los apuntes de tus materias para poder mantener todo organizado.
                     </p>
                 </div>
                 <div className="card">
-                    <h3 className="card-titulo">Titulo card2</h3>
+                    <div className="card-logo">
+                    </div>
+                    <h3 className="card-titulo">Armá tu agenda inteligente</h3>
                     <p className="card-desc">
-                        Parrafo alkajlkjd asjndjdnf cdjn ajsnfl jdfnlas mfdnlna
+                        Registrá los proximos eventos y recibí recordatorios con un apartado de agendas inteligentes que te permite organizarte con el uso de IA
                     </p>
                 </div>
                 <div className="card">
-                    <h3 className="card-titulo">Titulo card</h3>
+                    <h3 className="card-titulo">Creá tu propia comunidad</h3>
                     <p className="card-desc">
-                        Parrafo alkajlkjd asjndjdnf cdjn ajsnfl jdfnlas mfdnlna
+                        Creá una comunidad mediante los foros, en donde es posible tener contacto con miles de personas
                     </p>
                 </div>
             </div>

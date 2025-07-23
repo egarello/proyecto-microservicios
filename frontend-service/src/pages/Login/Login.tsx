@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { login } from '../../services/AuthServices';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import Layout from '../../components/Layout/Layout';
 //import Layout from '../../components/Layout/Layout';
@@ -7,6 +8,7 @@ const Login: React.FC = () => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [error,setError] = useState('');
+    const navigate = useNavigate();
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault(); 
         try{
@@ -14,6 +16,7 @@ const Login: React.FC = () => {
             localStorage.setItem('token',token);
             setError('');
             console.log('Inicio de sesión exitoso. Token: ', token);
+            navigate('/inicio')
         }catch(error){
             if(error instanceof Error){
                 setError(error.message);
