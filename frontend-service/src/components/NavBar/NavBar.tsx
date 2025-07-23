@@ -6,7 +6,12 @@ const NavBar: React.FC = () => {
     return(
         <nav className="navbar">
             <div className="navbar-logo">
-                <Link to="/" className="navbar-link">Mi App</Link>
+                { isLoged ? (
+                    <Link to="/inicio" className="navbar-link">Mi App</Link>
+                ):(
+                    <Link to="/" className="navbar-link">Mi App</Link>
+                )}
+
             </div>
             <div className="navbar-links">
                 {isLoged ? (

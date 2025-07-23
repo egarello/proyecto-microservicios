@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
                 <NavBar/>
             </header>
             <main className="main-content">
-                {children}  {/* Aquí se inyectará el contenido (como Login) */}
+                {children}
             </main>
             <footer>
                 <Footer />
