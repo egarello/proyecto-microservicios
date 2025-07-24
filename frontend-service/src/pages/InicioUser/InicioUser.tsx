@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import './InicioUser.css';
 import MateriasContainer from "../../components/MateriasContainer/MateriasContainer";
-
+import Recordatorios from "../../components/Recordatorios/Recordatorios";
 const opciones = [
     { key: "materias", label: "Materias" },
     { key: "calendario", label: "Calendario" },
     { key: "notas", label: "Notas" }
 ];
+
 
 const InicioUser: React.FC = () => {
     const [seleccion, setSeleccion] = useState("materias");
@@ -44,7 +45,7 @@ const InicioUser: React.FC = () => {
                 </div>  
                 <div className="right-side-content">
                     <div className="right-container">
-                        <h3>Hola como va</h3>
+                        <Recordatorios/>
                     </div>
                 </div>  
             </div>
