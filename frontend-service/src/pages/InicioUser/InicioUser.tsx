@@ -44,9 +44,7 @@ const InicioUser: React.FC = () => {
                     {renderContenido()}
                 </div>  
                 <div className="right-side-content">
-                    <div className="right-container">
-                        <Recordatorios/>
-                    </div>
+                    <Recordatorios/>
                 </div>  
             </div>
 

@@ -1,3 +1,22 @@
+.recordatorios{
+    border-radius: 1vh;
+    border: rgb(114, 114, 114) 1px solid;
+    margin-top: 2vh;
+    margin-right: 2vh;
+}
+.titulo{
+    padding-left:5%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 .lista-recordatorios{
     list-style: none;
+}
+.lista-recordatorios li{
+    display: flex;
+    justify-content: space-between;
+}
+.lista-recordatorios li h4{
+    max-width: 50%;
+    padding-right: 10%;
+    font-weight:lighter;
 }

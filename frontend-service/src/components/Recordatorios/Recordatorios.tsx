@@ -8,8 +8,8 @@ const recordatorios = [
 const Recordatorios: React.FC = () => {
     const [hayRecordatorios, setHayRecordatorios] = useState(true);
     return(
-        <>
-            <h3>Recordatorios</h3>
+        <div className="recordatorios">
+            <h3 className="titulo">Recordatorios</h3>
             {hayRecordatorios ? (
                 <ul className="lista-recordatorios">
                     {recordatorios.map(rec => (
@@ -22,8 +22,7 @@ const Recordatorios: React.FC = () => {
                 ):
                 <h4>No hay recordatorios programados</h4> 
             }
- 
-        </>
+        </div>
     );
 }
 
