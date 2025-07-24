@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import './InicioUser.css';
+import MateriasContainer from "../../components/MateriasContainer/MateriasContainer";
 
 const opciones = [
     { key: "materias", label: "Materias" },
@@ -14,7 +15,7 @@ const InicioUser: React.FC = () => {
     const renderContenido = () =>{
         switch(seleccion){
             case "materias":
-                return <h3>Materias</h3>;
+                return <MateriasContainer/>
             case "calendario":
                 return <h3>Calendario</h3>;
             case "notas":
@@ -47,6 +48,7 @@ const InicioUser: React.FC = () => {
                     </div>
                 </div>  
             </div>
+
         </Layout>
 
     );
