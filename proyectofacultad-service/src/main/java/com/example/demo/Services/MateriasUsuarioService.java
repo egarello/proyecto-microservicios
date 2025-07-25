@@ -9,5 +9,4 @@ import com.example.demo.Repositories.MateriasUsuarioRepository;
 public class MateriasUsuarioService {
     @Autowired
     private MateriasUsuarioRepository materiasUsuarioRepository;
-
 }

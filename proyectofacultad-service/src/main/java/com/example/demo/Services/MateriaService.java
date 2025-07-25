@@ -28,11 +28,6 @@ public class MateriaService {
             .orElseThrow(() -> new NullMateriasException());
         return materia;
     }
-    public Double calcularPromedio() throws NullPromedioException{
-        Double promedio = materiaRepository.calcularPromedio()
-            .orElseThrow(()-> new NullPromedioException());
-        return promedio;
-    }
 
     public Materia saveMateria(Materia materia) throws SavingMateriaException{
         Materia materiaGuardada = Optional.of(materiaRepository.save(materia))

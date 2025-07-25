@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Entities.Materia;
 import com.example.demo.Entities.Profesor;
 import com.example.demo.Exceptions.NullMateriasException;
-import com.example.demo.Exceptions.NullPromedioException;
 import com.example.demo.Services.MateriaService;
 import java.util.*;
 
@@ -57,14 +56,6 @@ public class MateriaController {
         }
     }
 
-    @GetMapping("/materias/promedio")
-    public ResponseEntity<?> calcularPromedioMaterias(){
-        try{
-            return ResponseEntity.ok(materiaService.calcularPromedio());
-        }catch(NullPromedioException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-            }
-    }
 
     @PostMapping("/materias")
     public ResponseEntity<?> saveMateria(@RequestBody Map<String,Object> payload){
@@ -82,5 +73,5 @@ public class MateriaController {
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); //no se carga la nueva materia debido a una excepción en el service.
         }
-    }
+    }   
 }
