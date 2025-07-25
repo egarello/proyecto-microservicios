@@ -3,10 +3,9 @@ package com.example.demo.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.Repositories.MateriaRepository;
-import com.example.demo.DTOs.UserDTO;
 import com.example.demo.Entities.*;
 import com.example.demo.Exceptions.*;
-import com.example.demo.FeignInterfaces.UsuarioClient;
+
 
 import java.util.*;
 
@@ -15,8 +14,6 @@ public class MateriaService {
     @Autowired
     private MateriaRepository materiaRepository;
     
-    @Autowired
-    private UsuarioClient usuarioClient;
 
     public List<Materia> getMaterias(){
         List<Materia> listaMaterias = materiaRepository.findAll();
@@ -50,9 +47,4 @@ public class MateriaService {
         materiaRepository.delete(materia);
     }
 
-    public List<UserDTO> getUsuariosPorMateria(Long id){
-        return usuarioClient.obtenerUsuariosPorMateria(id);
-    }
-
-    //cambio para probar
 }

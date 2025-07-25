@@ -12,18 +12,12 @@ public class Materia {
     private int id;
 
     private String nombre;
-    @Column(nullable = true,name="nota_final")
-    private Double notaFinal;
     private String descripcion;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "profesor_id",nullable = true)
     private Profesor profesor;
 
-    @JsonIgnore //acá uso el JsonIgnore para que no se genere una recursión infinita con la clase Año.
-    @ManyToOne
-    @JoinColumn(name = "año_id")
-    private Año año;
     @JsonIgnore //acá lo mismo. Tengo que ver si es necesario acá o en la clase Actividades.
     @OneToMany(mappedBy = "nombreMateria", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Actividades> actividades;
@@ -51,18 +45,6 @@ public class Materia {
     }
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
-    }
-    public Double getNotaFinal() {
-        return notaFinal;
-    }
-    public void setNotaFinal(Double notaFinal) {
-        this.notaFinal = notaFinal;
-    }
-    public Año getAño() {
-        return año;
-    }
-    public void setAño(Año año) {
-        this.año = año;
     }
     public List<Actividades> getActividades() {
         return actividades;

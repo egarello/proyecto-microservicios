@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.DTOs.UserDTO;
-import com.example.demo.Entities.Año;
 import com.example.demo.Entities.Materia;
 import com.example.demo.Entities.Profesor;
 import com.example.demo.Exceptions.NullMateriasException;
@@ -28,9 +25,6 @@ public class MateriaController {
 
     @Autowired
     private ProfesorController profesorController;
-    
-    @Autowired
-    private AñoController añoController;
 
     @GetMapping("/materias")
     public ResponseEntity<?> getMaterias(){
@@ -78,26 +72,15 @@ public class MateriaController {
             Materia materia = new Materia();
             materia.setNombre((String) payload.get("nombre"));
             materia.setDescripcion((String) payload.get("descripcion"));
-            materia.setNotaFinal(payload.get("notaFinal") != null ? Double.valueOf(payload.get("notaFinal").toString()) : null);
 
             Long profesorId = Long.valueOf(payload.get("profesor_id").toString());
             Profesor profesor = profesorController.getProfesorById(profesorId)
                     .orElseThrow(() -> new RuntimeException("Profesor no encontrado"));
             materia.setProfesor(profesor);
-
-            Año anio = añoController.getAñoByIdOptional(Long.valueOf(payload.get("año_id").toString()))
-                .orElseThrow(() -> new RuntimeException("Año no existente."));
-            materia.setAño(anio);
             
             return ResponseEntity.ok(materiaService.saveMateria(materia)); // la nueva materia es cargada.
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); //no se carga la nueva materia debido a una excepción en el service.
         }
     }
-
-    @GetMapping("/materia/{id}/users")
-    public List<UserDTO> getUsuariosPorMateria(@PathVariable("id") Long id){
-        return materiaService.getUsuariosPorMateria(id);
-    }
-
 }
