@@ -3,6 +3,10 @@ import Layout from "../../components/Layout/Layout";
 import './InicioUser.css';
 import MateriasContainer from "../../components/MateriasContainer/MateriasContainer";
 import Recordatorios from "../../components/Recordatorios/Recordatorios";
+import Notas from "../../components/Notas/Notas";
+import Calendario from "../../components/Calendario/Calendario";
+
+
 const opciones = [
     { key: "materias", label: "Materias" },
     { key: "calendario", label: "Calendario" },
@@ -16,11 +20,11 @@ const InicioUser: React.FC = () => {
     const renderContenido = () =>{
         switch(seleccion){
             case "materias":
-                return <MateriasContainer/>
+                return <MateriasContainer/>;
             case "calendario":
-                return <h3>Calendario</h3>;
+                return <Calendario/>;
             case "notas":
-                return <h3>Notas</h3>;
+                return <Notas/>;
         }
     }
 
