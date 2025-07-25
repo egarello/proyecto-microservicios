@@ -10,7 +10,8 @@ import Calendario from "../../components/Calendario/Calendario";
 const opciones = [
     { key: "materias", label: "Materias" },
     { key: "calendario", label: "Calendario" },
-    { key: "notas", label: "Notas" }
+    { key: "notas", label: "Notas" },
+    { key: "horarios", label: "Horarios" },
 ];
 
 
@@ -25,6 +26,8 @@ const InicioUser: React.FC = () => {
                 return <Calendario/>;
             case "notas":
                 return <Notas/>;
+            case "horarios":
+                return <h4>Horarios</h4>;
         }
     }
 
@@ -51,9 +54,7 @@ const InicioUser: React.FC = () => {
                     <Recordatorios/>
                 </div>  
             </div>
-
         </Layout>
-
     );
 }
 
