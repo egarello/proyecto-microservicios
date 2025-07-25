@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS `nota` (
 
 -- Datos iniciales para usuarios_db
 INSERT IGNORE INTO `users` (`id`, `name`, `lastname`, `username`, `password`, `rol`, `email`) VALUES
-(1, 'Admin', 'Sistema', 'admin', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.', 'admin', 'admin@example.com'),
-(2, 'Profesor', 'Ejemplo', 'profesor', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.', 'profesor', 'profesor@example.com'),
-(3, 'Alumno', 'Prueba', 'alumno', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.', 'alumno', 'alumno@example.com');
+(1, 'Admin', 'Sistema', 'admin', '{noop}1234', 'admin', 'admin@example.com'),
+(2, 'Profesor', 'Ejemplo', 'profesor', '{noop}5678', 'profesor', 'profesor@example.com'),
+(3, 'Alumno', 'Prueba', 'alumno', '{noop}9101112', 'alumno', 'alumno@example.com');
 
 INSERT IGNORE INTO `nota` (`id`, `contenido`, `ultima_modificacion`, `user_id`) VALUES
 (1, 'Nota inicial de administrador', NOW(), 1),

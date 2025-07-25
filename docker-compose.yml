@@ -27,6 +27,7 @@ services:
     depends_on:
       - mysql
       - eureka-server
+    restart: unless-stopped
     networks:
       - backend
 
@@ -43,6 +44,7 @@ services:
     depends_on:
       - mysql
       - eureka-server
+    restart: unless-stopped
     networks:
       - backend
 
@@ -50,6 +52,7 @@ services:
     build: ./eureka-server
     ports:
       - "8761:8761"
+    restart: unless-stopped
     networks:
       - backend
   api-gateway:
@@ -60,6 +63,7 @@ services:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
       depends_on:
         - eureka-server
+      restart: unless-stopped
       networks:
         - backend
 
