@@ -1,6 +1,6 @@
 package com.example.demo.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,22 +9,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
 @Entity
-@Table(name = "materiausuario")
-public class MateriaUsuario {
+@Table(name="nota")
+public class Nota{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "user_id") @JsonIgnore
+    @JoinColumn(name="user_id")
     private User user;
 
-    private Long materiaId; // Este ID viene del otro servicio
+    private String contenido;
 
-    private String estado;
-    private Double nota;
-
+    private LocalDateTime ultimaModificacion;
 
     public Long getId() {
         return id;
@@ -38,24 +37,16 @@ public class MateriaUsuario {
     public void setUser(User user) {
         this.user = user;
     }
-    public Long getMateriaId() {
-        return materiaId;
+    public String getContenido() {
+        return contenido;
     }
-    public void setMateriaId(Long materiaId) {
-        this.materiaId = materiaId;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
-    public String getEstado() {
-        return estado;
+    public LocalDateTime getUltimaModificacion() {
+        return ultimaModificacion;
     }
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    public Double getNota() {
-        return nota;
-    }
-    public void setNota(Double nota) {
-        this.nota = nota;
-    }
-
-    
+    public void setUltimaModificacion(LocalDateTime ultimaModificacion) {
+        this.ultimaModificacion = ultimaModificacion;
+    } 
 }

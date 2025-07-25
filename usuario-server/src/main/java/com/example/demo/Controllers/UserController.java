@@ -2,20 +2,19 @@ package com.example.demo.Controllers;
 
 import java.util.List;
 
+import org.apache.hc.core5.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import com.example.demo.Entities.User;
-import com.example.demo.Services.MateriaUsuarioService;
 import com.example.demo.Services.UserService;
 
 
 @RestController
 public class UserController {
-    @Autowired
-    private MateriaUsuarioService materiaUsuarioService;
-
     @Autowired
     private UserService userService;
 
@@ -23,9 +22,14 @@ public class UserController {
     public List<User> obtenerUsuarios(){
         return userService.getUsers();
     }
-    @GetMapping("/usuarios/por-materia/{id}")
-    public List<User> obtenerUsuariosPorMateria(@PathVariable Long id) {
-        return materiaUsuarioService.obtenerUsuariosPorMateria(id);
-    }
 
+    @PostMapping("/users")
+    public ResponseEntity<?> guardarUsuario(@RequestBody User usuario){
+        try{
+            userService.guardarUsuario(usuario);
+            return ResponseEntity.ok(usuario);
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).body("Error: "+e.getMessage());
+        }
+    }
 }
