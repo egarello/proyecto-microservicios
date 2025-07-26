@@ -17,7 +17,7 @@ const opciones = [
 
 const InicioUser: React.FC = () => {
     const [seleccion, setSeleccion] = useState("materias");
-
+    const [showSideBar,setShowSideBar] = useState(true);
     const renderContenido = () =>{
         switch(seleccion){
             case "materias":
@@ -34,7 +34,15 @@ const InicioUser: React.FC = () => {
     return(
         <Layout>
             <div className="inicio-user-content">
-                <div className="side-bar">
+                <div className={`side-bar ${showSideBar ? 'open' : 'close'}`}>
+                    <button 
+                        className="menu-toggle"
+                        onClick={() => setShowSideBar(!showSideBar)}
+                    >
+                    ☰
+                    </button>
+
+                    {showSideBar && (
                     <ul className="sidebar-menu">
                         {opciones.map(op => (
                             <li
@@ -46,7 +54,8 @@ const InicioUser: React.FC = () => {
                             </li>
                         ))}
                     </ul>
-                </div>    
+                    )}
+                </div>
                 <div className="center-content">
                     {renderContenido()}
                 </div>  

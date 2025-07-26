@@ -7,16 +7,32 @@
 .side-bar{
     border-top: solid black 2px;
     border-right: solid black 2px;
-    width: 25%;
     background-color: #393939;
+    transition: all 0.3s ease-in-out;
 }
+.side-bar.open{
+    width: 20%;
+}
+.side-bar.close{
+    width: 4%;
+}
+/*Ahora tenemos el tema del botón para mostrar o esconder el menu*/
+.menu-toggle{
+    background:transparent;
+    transition:background-color ease 0.3s;
+}
+
+.menu-toggle:hover{
+    background-color:#4f4f4f ;
+}
+
+/*Contenido principal de la página de inicio del user*/
 .center-content{
     border-top: solid black 2px;
-    width: 50%;
+    width:auto; /*esto lo pongo para que abarque todo el ancho que pueda en caso de que se cierre o se abra la sidebar*/
     padding: 8px;
     background-color: #1a1a1a;
-
-      flex: 1; /* Esto lo pongo para que el contenedor sepa que altura mantener*/
+    flex: 1; /* Esto lo pongo para que el contenedor sepa que altura mantener*/
     min-height: 0; /* Lo ponemos para que los hijos controlen el scroll */
 }
 .right-side-content{
