@@ -5,13 +5,13 @@ import MateriasContainer from "../../components/MateriasContainer/MateriasContai
 import Recordatorios from "../../components/Recordatorios/Recordatorios";
 import Notas from "../../components/Notas/Notas";
 import Calendario from "../../components/Calendario/Calendario";
-
+import Agenda from "../../components/Horarios/Agenda";
 
 const opciones = [
     { key: "materias", label: "Materias" },
     { key: "calendario", label: "Calendario" },
     { key: "notas", label: "Notas" },
-    { key: "horarios", label: "Horarios" },
+    { key: "agenda", label: "Agenda" },
 ];
 
 
@@ -27,7 +27,7 @@ const InicioUser: React.FC = () => {
             case "notas":
                 return <Notas/>;
             case "horarios":
-                return <h4>Horarios</h4>;
+                return <Agenda/>
         }
     }
 
