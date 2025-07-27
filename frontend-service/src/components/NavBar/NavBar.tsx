@@ -11,10 +11,19 @@ const NavBar: React.FC = () => {
     const isLoged = localStorage.getItem("token");
     const navigate = useNavigate();
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        setShowProfileMenu(false);
-        navigate("/");
+    const handleLogout = (opcion: string) => {
+        switch(opcion){
+            case "logout":
+                localStorage.removeItem("token");
+                localStorage.removeItem("userData"); 
+                setShowProfileMenu(false);
+                navigate("/");
+                return
+            case 'editar':
+                navigate("/perfil/editar");
+                return
+        }
+
     }
 
     return(
@@ -48,8 +57,9 @@ const NavBar: React.FC = () => {
                         {opciones.map(op => (
                             <li
                                 key={op.key}
+                                value={op.label}
                             >
-                                <button onClick={handleLogout}>{op.label}</button>
+                                <button onClick={()=>handleLogout(op.key)}>{op.label}</button>
                             </li>
                         ))}
                     </ul>
