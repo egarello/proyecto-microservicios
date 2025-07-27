@@ -51,7 +51,7 @@
     padding: 1%;
     border-radius: 1vh;
 }
-.sidebar-menu li.active {
+.sidebar-menu li.active{
   font-weight: bold;
   color: #1976d2;
 }

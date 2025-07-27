@@ -10,6 +10,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.dia-titulo{
+  text-align: center;
+}
 .contenedor-scroll{
     flex:1;
     border-radius:8px;
@@ -35,7 +38,32 @@
     border: 3px solid transparent; /* ¡Clave para el efecto! */
     background-clip: content-box;
   }
-  scrollbar-color: #4e4646 transparent;
+  scrollbar-color: #4a4545 transparent;
   scrollbar-width: thin;
 
+}
+
+/* Estilos de los bloques*/
+.bloque-tiempo{
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  flex:1;
+  min-width: 0;
+  border: 1px solid white;
+}
+.marcador-hora{
+  width: 25%;
+}
+.contenido-tareas.con-tareas{
+  width:75%;
+  flex:1;
+}
+.lista-tareas{
+  padding-left: 0;
+  list-style: none;
+}
+.tarea{
+  display: flex;
+  justify-content: space-between;
 }

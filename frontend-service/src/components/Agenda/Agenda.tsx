@@ -62,12 +62,24 @@ const miSemana: Dia[] = [
 
 const Agenda: React.FC = () => {
     const [unidadTiempo, setUnidadTiempo] = useState("dia");
-    const [diaActual] = useState<Dia>(miSemana[0]);
+    const [diaActual,setDiaActual] = useState<Dia>(miSemana[0]);
 
     const formatearHora = (hora: number): string => {
         return `${hora.toString().padStart(2, '0')}:00`;
     };
-
+    const cambiarEstadoTarea = (tareaActualizada: Tarea) => {
+        setDiaActual(prev => ({
+        ...prev,
+        bloques: prev.bloques.map(bloque => ({
+            ...bloque,
+            tareas: bloque.tareas.map(tarea => 
+            tarea.id === tareaActualizada.id
+                ? { ...tarea, completada: !tarea.completada }
+                : tarea
+            )
+        }))
+        }));
+    };
     return (
         <div className="agenda-container">
             <div className="agenda-header">
@@ -91,7 +103,8 @@ const Agenda: React.FC = () => {
                         {diaActual.fecha.toLocaleDateString('es-ES', { 
                             weekday: 'long', 
                             day: 'numeric', 
-                            month: 'long' 
+                            month: 'long',
+                            year: 'numeric',
                         })}
                     </h3>
                     <div className="contenedor-scroll">
@@ -113,6 +126,7 @@ const Agenda: React.FC = () => {
                                                         <button 
                                                             className={`estado-tarea ${tarea.completada ? 'completada' : 'pendiente'}`}
                                                             aria-label={tarea.completada ? 'Marcar como pendiente' : 'Marcar como completada'}
+                                                            onClick={() => cambiarEstadoTarea(tarea)}
                                                         >
                                                             {tarea.completada ? '✓' : '○'}
                                                         </button>
