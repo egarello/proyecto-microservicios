@@ -1,0 +1,11 @@
+.materia-detail{
+    border: 1px solid #888;
+    border-radius: 1vh;
+    padding: 1vh;
+    margin:5vh 1vh 1vh 1vh;
+
+}
+.header-materia-detail{
+    display: flex;
+    justify-content: space-between;
+}

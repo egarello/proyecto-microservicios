@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import './MateriasContainer.css';
+import MateriaDetail from "../MateriaDetail/MateriaDetail";
 
 const materias = [
     {id: 1, nombre: "Matemática", anio:"2021", ultimaModificacion:"10/05/2025"},
@@ -10,7 +11,17 @@ const materias = [
     {id: 6, nombre: "Redes", anio:"2024",ultimaModificacion:"01/01/2025"},
 ];
 
+interface Materia{
+    nombre: string,
+    ultimaModificacion: string,
+    anio: string,
+}
+
 const MateriasContainer: React.FC = () => {
+    const [materiaSeleccionada,setMateriaSeleccionada] = useState<Materia|null>(null);
+    const handleClose = () => {
+        setMateriaSeleccionada(null);
+    }
     return (
         <div>
             <h3>Materias</h3>
@@ -24,7 +35,7 @@ const MateriasContainer: React.FC = () => {
                 </thead>
                 <tbody>
                     {materias.map(op => (
-                        <tr key={op.id}>
+                        <tr key={op.id} onClick={() => setMateriaSeleccionada(op)}>
                             <td>{op.nombre}</td>
                             <td>{op.ultimaModificacion}</td>
                             <td>{op.anio}</td>
@@ -32,6 +43,12 @@ const MateriasContainer: React.FC = () => {
                     ))}
                 </tbody>
             </table>
+            { materiaSeleccionada && (
+                <div>
+                    <MateriaDetail materia={materiaSeleccionada} onClose={handleClose} />
+                </div>)
+            }
+
         </div>
     );
 }
