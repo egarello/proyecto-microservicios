@@ -3,9 +3,17 @@
     border-radius: 1vh;
     padding: 1vh;
     margin:5vh 1vh 1vh 1vh;
-
+    display: flex;
+    flex-direction: column;
 }
 .header-materia-detail{
+    background-color: rgb(100, 88, 172);
+    border-radius: 1vh;
     display: flex;
+    border: 1px solid transparent;
     justify-content: space-between;
+    padding-left: 1vh;
+}
+.header-materia-detail button{
+    background-color: transparent;
 }

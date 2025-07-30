@@ -34,7 +34,37 @@
     background-color: #1a1a1a;
     flex: 1; /* Esto lo pongo para que el contenedor sepa que altura mantener*/
     min-height: 0; /* Lo ponemos para que los hijos controlen el scroll */
+    max-height: 100vh;
+    /*Propiedades para el scrollbar*/
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color:rgba(128, 128, 128, 0.3) transparent;
 }
+.center-content::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px; 
+}
+
+.center-content::-webkit-scrollbar-track {
+    background: transparent; 
+}
+.center-content::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3); 
+    border-radius: 4px;
+    border: 2px solid transparent; 
+    background-clip: content-box;
+    transition: background 0.3s ease;
+}
+
+.center-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.6); 
+}
+
+.center-content::-webkit-scrollbar-thumb:not(:hover) {
+    background: rgba(128, 128, 128, 0.1);
+}
+/*Acá terminan las propiedades del scrollbar*/
+
 .right-side-content{
     width: 25%;
     border-top: solid black 2px;
