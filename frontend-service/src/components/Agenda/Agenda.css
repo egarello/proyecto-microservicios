@@ -1,14 +1,43 @@
 .agenda-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex:1;
-    min-height:0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  min-height:0;
+  overflow-y: auto;
+  max-height: 100vh;
+
+  scrollbar-width: thin;
+  scrollbar-color:rgba(128, 128, 128, 0.3) transparent;
+}
+
+.agenda-container::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px; 
+}
+
+.agenda-container::-webkit-scrollbar-track {
+    background: transparent; 
+}
+.agenda-container::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3); 
+    border-radius: 4px;
+    border: 2px solid transparent; 
+    background-clip: content-box;
+    transition: background 0.3s ease;
+}
+
+.agenda-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.6); 
+}
+
+.agenda-container::-webkit-scrollbar-thumb:not(:hover) {
+    background: rgba(128, 128, 128, 0.1);
 }
 .agenda-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .dia-titulo{
   text-align: center;
@@ -16,7 +45,7 @@
 .contenedor-scroll{
     flex:1;
     border-radius:8px;
-    border: solid white 1px;
+    border: solid #4f4f4f 1px;
     overflow-y:auto;
     max-height: calc(100vh - 25vh);
     scrollbar-width: thin;
@@ -50,7 +79,7 @@
   align-items: center;
   flex:1;
   min-width: 0;
-  border: 1px solid white;
+  border: 1px solid #4f4f4f;
 }
 .marcador-hora{
   width: 25%;
@@ -66,4 +95,79 @@
 .tarea{
   display: flex;
   justify-content: space-between;
+}
+
+.agregar-tarea{
+  display:flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.agregar-tarea-form{
+  max-width: 75%;
+  padding: 2vh;
+  border-radius:1vh;
+  border: 1px solid #4f4f4f;
+  background-color: #1f1f1f;
+}
+.agregar-tarea-form div{
+  display: flex;
+  min-width: 0;
+  margin-bottom: 1vh;
+}
+.agregar-tarea-form div label{
+  min-width: 20%;
+}
+
+.agregar-tarea-button{
+  background-color: #1976d2;
+  color: white;
+  width: auto;
+  align-self: flex-start;
+  border: none;
+  padding: 1vh 2vh;
+  border-radius: 1vh;
+  cursor: pointer;
+  margin-bottom: 1vh;
+  transition: background-color 0.3s ease;
+}
+
+.agregar-button:hover {
+  background-color: #125aa3;
+}
+
+.agregar-tarea-form div input{
+  border-radius: 1vh;
+  padding: 0.5em;
+  border: 1px solid #888;
+  color: white;
+  background-color: #2b2b2b;
+}
+.descripcion-tarea{
+  min-width: 50%;
+  height: 10vh;
+  resize: vertical;
+  padding: 0.5em;
+  line-height: 1.2;
+  text-align: left;
+  vertical-align:top ;
+  border-radius: 1vh;
+  border: 1px solid #888;
+  color: white;
+  background-color: #2b2b2b;
+}
+
+
+.guardar-tarea-button{
+  margin-top: 1vh;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 1vh 2vh;
+  border-radius: 1vh;
+  cursor: pointer;
+}
+
+.guardar-tarea-button:hover {
+  background-color: #1f7c32;
 }

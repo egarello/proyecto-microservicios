@@ -63,7 +63,7 @@ const miSemana: Dia[] = [
 const Agenda: React.FC = () => {
     const [unidadTiempo, setUnidadTiempo] = useState("dia");
     const [diaActual,setDiaActual] = useState<Dia>(miSemana[0]);
-
+    const [showFormAgregarTarea, setShowFormAgregarTarea] = useState(false);
     const formatearHora = (hora: number): string => {
         return `${hora.toString().padStart(2, '0')}:00`;
     };
@@ -79,7 +79,7 @@ const Agenda: React.FC = () => {
             )
         }))
         }));
-    };
+    }; 
     return (
         <div className="agenda-container">
             <div className="agenda-header">
@@ -95,6 +95,57 @@ const Agenda: React.FC = () => {
                         <option value="mes">Mes</option>
                     </select>
                 </div>
+            </div>
+            
+            <div className="agregar-tarea">
+                <button className={'agregar-tarea-button'} onClick={() => setShowFormAgregarTarea(!showFormAgregarTarea)}>{!showFormAgregarTarea? 'Agregar Tarea' : 'Cancelar'}</button>
+                { showFormAgregarTarea && (
+                    <form 
+                        className={`agregar-tarea-form ${showFormAgregarTarea ? 'visible' : 'hidden'}`}>
+                        <div>
+                            <label htmlFor="titulo">Título:</label>
+                            <input 
+                                type="text" 
+                                id="titulo" 
+                                name="titulo"
+                                placeholder="Escriba el título de la tarea" 
+                                required 
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="desc">Descripción:</label>
+                            <textarea 
+                                className="descripcion-tarea"
+                                id="desc" 
+                                name="descripcion"
+                                placeholder="Escriba la descripción de la tarea"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="dia">Día:</label>
+                            <input 
+                                type="date" 
+                                id="dia" 
+                                name="dia"
+                                required 
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="hora">Hora:</label>
+                            <input 
+                                type="time" 
+                                id="hora" 
+                                name="hora"
+                                required 
+                            />
+                        </div>
+                        <button className="guardar-tarea-button" type="submit">
+                            Guardar
+                        </button>
+                    </form>
+                    )
+                }
+
             </div>
 
             {unidadTiempo === "dia" && (
