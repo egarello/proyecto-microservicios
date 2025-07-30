@@ -97,6 +97,7 @@
   justify-content: space-between;
 }
 
+/*A partir de acá tengo los estilos del form de agregar tarea*/
 .agregar-tarea{
   display:flex;
   flex-direction: column;
@@ -104,11 +105,29 @@
 }
 
 .agregar-tarea-form{
-  max-width: 75%;
-  padding: 2vh;
-  border-radius:1vh;
+  border-radius: 1vh;
   border: 1px solid #4f4f4f;
   background-color: #1f1f1f;
+  max-height: 0;
+  max-width: 75%;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 2vh;
+  transition:max-height 0.3s ease-in-out, opacity 0.2s ease-in-out, padding 0.3s ease-in-out, margin-top 0.3s;
+}
+
+.agregar-tarea-form.visible{
+  max-height: 500px;
+  
+  opacity: 1;
+  padding: 2vh;
+  margin-top: 1vh;
+}
+.agregar-tarea-form.hidden{
+  max-height: 0;
+  opacity: 0;
+  padding: 0 2vh;
+  margin-top: 0;
 }
 .agregar-tarea-form div{
   display: flex;
