@@ -64,6 +64,7 @@ const Agenda: React.FC = () => {
     const [unidadTiempo, setUnidadTiempo] = useState("dia");
     const [diaActual,setDiaActual] = useState<Dia>(miSemana[0]);
     const [showFormAgregarTarea, setShowFormAgregarTarea] = useState(false);
+
     const formatearHora = (hora: number): string => {
         return `${hora.toString().padStart(2, '0')}:00`;
     };
