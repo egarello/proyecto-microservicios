@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import './MateriasContainer.css';
 import MateriaDetail from "../MateriaDetail/MateriaDetail";
 
@@ -59,12 +59,69 @@ interface Materia{
 
 const MateriasContainer: React.FC = () => {
     const [materiaSeleccionada,setMateriaSeleccionada] = useState<Materia|null>(null);
+    const [showFiltrarOpciones, setShowFiltrarOpciones] = useState<boolean>(false);
+    const [anioFiltro, setAnioFiltro] = useState<string | null>(null);
+    const anioFiltroRef = useRef<HTMLSelectElement>(null);
+    const [aprobadasFiltro, setAprobadasFiltro] = useState(false);
+    const aprobadasFiltroRef = useRef<HTMLInputElement>(null);
+    const [isFiltroAplicado, setisFiltroAplicado] = useState(false);
+    
     const handleClose = () => {
         setMateriaSeleccionada(null);
     }
+
+    const aplicarFiltros = () => {
+        const anio = anioFiltroRef.current?.value;
+        const aprobadas = aprobadasFiltroRef.current?.checked;
+        setAnioFiltro(anio ? anio : null);
+        setAprobadasFiltro(!!aprobadas);
+        setisFiltroAplicado(true);
+        setShowFiltrarOpciones(!showFiltrarOpciones);
+    }
+
+
     return (
         <div>
-            <h3>Materias</h3>
+            <h1>Materias</h1>
+            <div className="filtrar-opciones-container">
+                <button 
+                    onClick={() => setShowFiltrarOpciones(!showFiltrarOpciones)} 
+                    className="filtrar-button opciones"
+                >
+                    {!showFiltrarOpciones? 'Filtrar' : 'Cancelar'}
+                </button>
+                {isFiltroAplicado && (
+                    <button 
+                        className="filtrar-button quitar-filtros"
+                        onClick={() => setisFiltroAplicado(false)}
+                    >
+                        ×
+                    </button>
+                )}
+                <div className={`opciones-container ${showFiltrarOpciones? 'visible':'hidden'}`}>
+                    <div>
+                        <label htmlFor="anio">Año de cursada:</label>
+                        <select name="anio" id="anio" ref={anioFiltroRef}>
+                            <option value=""selected>-</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="aprobadas">Solo aprobadas:</label>
+                        <input 
+                            type="checkbox"
+                            name="aprobadas"
+                            id="aprobadas"
+                            ref={aprobadasFiltroRef}
+                        />
+                    </div>
+                    <button className="aplicar-filtros-button" onClick={aplicarFiltros}>Aplicar</button>
+                </div>
+            </div>
             <table className="tabla-materias">
                 <thead>
                     <tr>

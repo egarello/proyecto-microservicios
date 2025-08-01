@@ -1,3 +1,59 @@
+.filtrar-button{
+    background-color: #6f6f6f;
+    border-radius: 0;
+    border: 1px solid rgb(164, 164, 164);
+    padding: 1vh;
+    transition: background-color 0.3s ease;
+}
+.filtrar-button.opciones{
+    margin-left: 1vw;
+}
+.filtrar-button:hover{
+    background-color: #525151;
+}
+.aplicar-filtros-button{
+    padding: 0vh 1vh 0.3vh 1vh; /*Arriba izq Abajo der*/
+    align-items: center;
+    background-color: #00815a;
+    border:1px solid #006345;
+    transition: background-color 0.3s ease;
+}
+.aplicar-filtros-button:hover{
+    background-color: #006345;
+}  
+.opciones-container{
+  border-radius: 1vh;
+  border: 1px solid #4f4f4f;
+  background-color: #1f1f1f;
+  max-height: 0;
+  width: 15vw;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 2vh;
+  transition:max-height 0.3s ease-in-out, opacity 0.2s ease-in-out, padding 0.3s ease-in-out, margin-top 0.3s;
+}
+.opciones-container.visible{
+  max-height: 50vh;
+  opacity: 1;
+  padding: 2vh;
+}
+.opciones-container.hidden{
+  max-height: 0;
+  opacity: 0;
+  padding: 0 2vh;
+  margin-top: 0;
+}
+
+.opciones-container div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+.opciones-container div label{
+    min-width: 10vw;
+}
+
+
 .tabla-materias {
     width: 100%;
     border-collapse: collapse;
