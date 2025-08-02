@@ -58,8 +58,7 @@
 .navbar-link:hover::after {
     transform: scaleX(1);
 }
-
-.sidebar-profile-container.open{
+.sidebar-profile-container{
     z-index: 1001;
     height: 100vh;
     position: fixed;
@@ -67,9 +66,15 @@
     top:0;
     overflow-y: auto;
     background-color: #1a1a1a;
-    min-width: 25%;
+    min-width: 0;
     border-radius: 1rem;
     border: rgb(114, 114, 114) 1px solid;
+    opacity: 0;
+    transition: opacity 0.1s ease, min-width 0.3s ease;
+}
+.sidebar-profile-container.open{
+    opacity: 1;
+    min-width: 20%;
 }
 .sidebar-profile-container.close{
     width: 0;
@@ -93,4 +98,28 @@ body.sidebar-open {
     justify-content: space-between;
     padding-left: 5%;
     border-bottom: 1px solid rgb(114, 114, 114);
+}
+
+.sidebar-profile{
+    padding: 0; /*Le saco el padding que viene por defecto con el ul*/
+}
+.sidebar-profile li{
+    transition: background-color 0.3s ease-in-out;
+    padding: 0.5rem;
+}
+.sidebar-profile li:hover{
+    background-color: #4b4b4b;
+}
+.titulo-sidebar{
+    display: flex;
+    align-items: center;
+}
+.titulo-sidebar button { /*Botón de cerrar el sidebar del perfil*/
+    padding: 0rem 0.3rem 0.1rem 0.3rem;
+    margin: 1rem;
+    border-radius: 1vh;
+    transition: background-color 0.3s ease;
+}
+.titulo-sidebar button:hover{
+    background-color: #4b4b4b;
 }

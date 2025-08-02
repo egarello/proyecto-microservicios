@@ -64,7 +64,7 @@ const MateriasContainer: React.FC = () => {
     const anioFiltroRef = useRef<HTMLSelectElement>(null);
     const [aprobadasFiltro, setAprobadasFiltro] = useState(false);
     const aprobadasFiltroRef = useRef<HTMLInputElement>(null);
-    const [isFiltroAplicado, setisFiltroAplicado] = useState(false);
+    const [isFiltroAplicado, setIsFiltroAplicado] = useState(false);
     
     const handleClose = () => {
         setMateriaSeleccionada(null);
@@ -75,7 +75,7 @@ const MateriasContainer: React.FC = () => {
         const aprobadas = aprobadasFiltroRef.current?.checked;
         setAnioFiltro(anio ? anio : null);
         setAprobadasFiltro(!!aprobadas);
-        setisFiltroAplicado(true);
+        setIsFiltroAplicado(true);
         setShowFiltrarOpciones(!showFiltrarOpciones);
     }
 
@@ -93,7 +93,7 @@ const MateriasContainer: React.FC = () => {
                 {isFiltroAplicado && (
                     <button 
                         className="filtrar-button quitar-filtros"
-                        onClick={() => setisFiltroAplicado(false)}
+                        onClick={() => setIsFiltroAplicado(false)}
                     >
                         ×
                     </button>

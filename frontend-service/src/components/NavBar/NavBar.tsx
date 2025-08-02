@@ -24,7 +24,7 @@ const NavBar: React.FC = () => {
         };
     }, [showProfileMenu]);
 
-    const handleLogout = (opcion: string) => {
+    const handleOptionSideBar = (opcion: string) => {
         setShowProfileMenu(false);
         switch(opcion){
             case "logout":
@@ -61,24 +61,20 @@ const NavBar: React.FC = () => {
             </nav>
             
             <div className={`sidebar-profile-container ${showProfileMenu ? 'open' : 'close'}`}>
-                {showProfileMenu && (
-                    <>
                     <div className="titulo-sidebar">
                         <h4>Hola</h4>
-                        <button onClick={() => setShowProfileMenu(!showProfileMenu)}>X</button>
+                        <button onClick={() => setShowProfileMenu(!showProfileMenu)}>×</button>
                     </div>
                     <ul className="sidebar-profile">
                         {opciones.map(op => (
                             <li
                                 key={op.key}
-                                onClick={() => handleLogout(op.key)}
+                                onClick={() => handleOptionSideBar(op.key)}
                             >
                                 {op.label}
                             </li>
                         ))}
                     </ul>
-                    </>
-                )}
             </div>
         </>
     );

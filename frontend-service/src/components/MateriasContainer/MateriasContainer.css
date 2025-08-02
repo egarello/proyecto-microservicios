@@ -31,6 +31,7 @@
   opacity: 0;
   padding: 0 2vh;
   transition:max-height 0.3s ease-in-out, opacity 0.2s ease-in-out, padding 0.3s ease-in-out, margin-top 0.3s;
+  
 }
 .opciones-container.visible{
   max-height: 50vh;
