@@ -11,7 +11,7 @@
     transition: all 0.3s ease-in-out;
 }
 .side-bar.open{
-    width: 20%;
+    width: 15%;
 }
 .side-bar.close{
     width: 4%;
@@ -95,4 +95,13 @@
     padding-left: 8vh;
     margin-top: 2vh;
     margin-right: 2vh;
+}
+
+.resizer{
+    width: 3px;
+    background-color: transparent;
+    cursor: ew-resize;
+}
+.resizer:hover{
+    background-color:  rgba(0, 0, 0, 0.1);
 }

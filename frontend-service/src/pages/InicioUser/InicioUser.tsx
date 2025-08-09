@@ -16,6 +16,7 @@ const opciones = [
 const InicioUser: React.FC = () => {
     const [seleccion, setSeleccion] = useState("materias");
     const [showSideBar,setShowSideBar] = useState(true);
+   
     const renderContenido = () =>{
         switch(seleccion){
             case "materias":
@@ -52,6 +53,7 @@ const InicioUser: React.FC = () => {
                     </ul>
                     )}
                 </div>
+                <div className="resizer" id='resizer'></div>
                 <div className="center-content">
                     {renderContenido()}
                 </div>  
