@@ -22,7 +22,7 @@ public class Nota{
     private User user;
 
     private String contenido;
-
+    private LocalDateTime instanteCreacion;
     private LocalDateTime ultimaModificacion;
 
     public Long getId() {
@@ -48,5 +48,12 @@ public class Nota{
     }
     public void setUltimaModificacion(LocalDateTime ultimaModificacion) {
         this.ultimaModificacion = ultimaModificacion;
+    }
+    public LocalDateTime getInstanteCreacion() {
+        return instanteCreacion;
+    }
+    public void setInstanteCreacion(LocalDateTime instanteCreacion) {
+        this.instanteCreacion = instanteCreacion;
     } 
+    
 }
