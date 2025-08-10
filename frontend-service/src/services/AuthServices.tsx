@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8090/auth/login';
+const API_URL = 'http://localhost:8090';
 
 export const login = async (username: string, password: string) => {
     try{
-        const response = await axios.post(API_URL,{
+        const response = await axios.post(API_URL+"/auth/login",{
             username:username,
             password:password,
         })
@@ -16,3 +16,4 @@ export const login = async (username: string, password: string) => {
         throw "Error desconocido al iniciar sesión.";
     }
 };
+

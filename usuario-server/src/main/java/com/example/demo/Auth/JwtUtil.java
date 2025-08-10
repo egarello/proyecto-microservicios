@@ -22,9 +22,11 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
-    public String generateToken(String username) {
+    public String generateToken(CustomUserDetails userDetails) {
         return Jwts.builder()
-            .subject(username)
+            .subject(userDetails.getUsername())
+            .claim("id",userDetails.getId())
+            .claim("rol", userDetails.getRol())
             .issuedAt(new Date())
             .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
             .signWith(getSigningKey()) // SIN pasar SignatureAlgorithm

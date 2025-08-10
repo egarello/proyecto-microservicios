@@ -14,6 +14,10 @@ const Login: React.FC = () => {
         try{
             const token = await login(username, password);
             localStorage.setItem('token',token);
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            localStorage.setItem('id',payload.id);
+            localStorage.setItem('rol',payload.rol);
+            localStorage.setItem('username',payload.sub);
             setError('');
             console.log('Inicio de sesión exitoso. Token: ', token);
             navigate('/inicio')

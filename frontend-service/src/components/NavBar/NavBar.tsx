@@ -11,6 +11,7 @@ const NavBar: React.FC = () => {
     const isLoged = localStorage.getItem("token");
     const navigate = useNavigate();
     const [showProfileMenu, setShowProfileMenu] = useState(false);
+    const username = localStorage.getItem("username");
     // Efecto para bloquear/desbloquear el scroll
     useEffect(() => {
         if (showProfileMenu) {
@@ -61,8 +62,8 @@ const NavBar: React.FC = () => {
             </nav>
             
             <div className={`sidebar-profile-container ${showProfileMenu ? 'open' : 'close'}`}>
-                    <div className="titulo-sidebar">
-                        <h4>Hola</h4>
+                    <div className="header-sidebar">
+                        <h4>Hola {username}</h4>
                         <button onClick={() => setShowProfileMenu(!showProfileMenu)}>×</button>
                     </div>
                     <ul className="sidebar-profile">

@@ -18,11 +18,22 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `nota` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `contenido` varchar(255) DEFAULT NULL,
+  `instante_creacion` datetime(6) DEFAULT NULL,
   `ultima_modificacion` datetime(6) DEFAULT NULL,
   `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKbnwxnoub9yh7xsiw24f52qjwv` (`user_id`),
   CONSTRAINT `FKbnwxnoub9yh7xsiw24f52qjwv` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Tabla tarea
+CREATE TABLE IF NOT EXISTS `tarea` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `completada` boolean DEFAULT FALSE,
+  `fechaYhora` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Datos iniciales para usuarios_db
@@ -31,9 +42,17 @@ INSERT IGNORE INTO `users` (`id`, `name`, `lastname`, `username`, `password`, `r
 (2, 'Profesor', 'Ejemplo', 'profesor', '{noop}5678', 'profesor', 'profesor@example.com'),
 (3, 'Alumno', 'Prueba', 'alumno', '{noop}9101112', 'alumno', 'alumno@example.com');
 
-INSERT IGNORE INTO `nota` (`id`, `contenido`, `ultima_modificacion`, `user_id`) VALUES
-(1, 'Nota inicial de administrador', NOW(), 1),
-(2, 'Nota de prueba para profesor', NOW(), 2);
+INSERT IGNORE INTO `nota` (`id`, `contenido`, `instante_creacion`, `ultima_modificacion`, `user_id`) VALUES
+(1, 'Nota inicial de administrador', NOW(), NOW(), 1),
+(2, 'Nota de prueba para profesor', NOW(), NOW(), 2),
+(3, 'Recordar reunión con docentes', NOW(), NOW(), 2),
+(4, 'Estudiar para el examen de física', NOW(), NOW(), 3);
+
+INSERT IGNORE INTO `tarea` (`id`, `titulo`, `descripcion`, `completada`, `fechaYhora`) VALUES
+(1, 'Revisar plan de estudios', 'Verificar materias pendientes del alumno', FALSE, DATE_ADD(NOW(), INTERVAL 2 DAY)),
+(2, 'Corregir exámenes', 'Parcial de Matemáticas', FALSE, DATE_ADD(NOW(), INTERVAL 3 DAY)),
+(3, 'Enviar notas', 'Subir notas al sistema', TRUE, DATE_SUB(NOW(), INTERVAL 1 DAY)),
+(4, 'Preparar presentación', 'Charla de bienvenida a alumnos', FALSE, DATE_ADD(NOW(), INTERVAL 5 DAY));
 
 -- Creación de la base de datos de facultad si no existe
 CREATE DATABASE IF NOT EXISTS proyectofacultad;
