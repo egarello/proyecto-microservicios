@@ -1,10 +1,10 @@
 package com.example.demo.Controllers;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +19,12 @@ public class NotaController {
 
     @GetMapping
     private ResponseEntity<?> getNotasByUsuarioId(Authentication authentication){
-        try{
-            Long userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
-            return ResponseEntity.ok(notaService.findByUserId(userId));
-        }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
-        }
+        Long userId = ((CustomUserDetails) authentication.getPrincipal()).getId();
+        return ResponseEntity.ok(notaService.findByUserId(userId));
+    }
+    @GetMapping("/{id}") //este método lo hago para probar si anda pasando el id por url en lugar de por el token
+    private ResponseEntity<?> getNotasByUsuarioId(@PathVariable Long id){
+        
+        return ResponseEntity.ok(notaService.findByUserId(id));
     }
 }

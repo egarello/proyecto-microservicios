@@ -24,12 +24,36 @@ public class JwtUtil {
 
     public String generateToken(CustomUserDetails userDetails) {
         return Jwts.builder()
-            .subject(userDetails.getUsername())
+            .setSubject(userDetails.getUsername())
             .claim("id",userDetails.getId())
             .claim("rol", userDetails.getRol())
-            .issuedAt(new Date())
-            .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+            .setIssuedAt(new Date())
+            .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
             .signWith(getSigningKey()) // SIN pasar SignatureAlgorithm
             .compact();
+    }
+
+    public String extractUsername(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+    public boolean isTokenValid(String token, CustomUserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    private boolean isTokenExpired(String token) {
+        Date expiration = Jwts.parserBuilder()
+                            .setSigningKey(getSigningKey())
+                            .build()
+                            .parseClaimsJws(token)
+                            .getBody()
+                            .getExpiration();
+        return expiration.before(new Date());
     }
 }
