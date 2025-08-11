@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entities.Nota;
+import com.example.demo.Entities.User;
 import com.example.demo.Repositories.NotaRepository;
+import com.example.demo.Repositories.UserRepository;
 
 import jakarta.ws.rs.NotFoundException;
 
@@ -13,6 +15,8 @@ import jakarta.ws.rs.NotFoundException;
 public class NotaService {
     @Autowired
     private NotaRepository notaRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public List<Nota> findByUserId(Long userId) {
         return notaRepository.findByUserId(userId);
@@ -22,7 +26,11 @@ public class NotaService {
             .orElseThrow(() -> new NotFoundException("No se ha encontrado la nota con el id: " + notaId));
         notaRepository.delete(notaAEliminar);
     }
-    public Nota crearNota(Nota nuevaNota){
+    public Nota crearNota(Nota nuevaNota, Long userId){
+        User usuario = userRepository.findById(userId)
+        .orElseThrow(() -> new NotFoundException("Usuario no encontrado"));
+        
+        nuevaNota.setUser(usuario);
         Nota notaCreada = notaRepository.save(nuevaNota);
         return notaCreada;
     }

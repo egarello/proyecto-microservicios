@@ -38,8 +38,9 @@ public class NotaController {
         return ResponseEntity.ok(notaService.findByUserId(id));
     }
     @PostMapping
-    private ResponseEntity<Nota> crearNota(@RequestBody Nota nuevaNota){
-        Nota notaCreada = notaService.crearNota(nuevaNota);
+    private ResponseEntity<Nota> crearNota(@RequestBody Nota nuevaNota, Authentication authentication){
+        CustomUserDetails user = ((CustomUserDetails) authentication.getPrincipal());
+        Nota notaCreada = notaService.crearNota(nuevaNota, user.getId());
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{id}")
                     .buildAndExpand(notaCreada.getId())
