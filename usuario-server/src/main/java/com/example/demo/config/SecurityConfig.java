@@ -45,7 +45,7 @@ public class SecurityConfig {
     /* acá tengo que cambiarlo después. 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance(); // ⚠️ Solo para desarrollo. Usar BCrypt en producción.
+        return NoOpPasswordEncoder.getInstance(); // Solo para desarrollo. Usar BCrypt en producción.
     }*/
 
     @Bean

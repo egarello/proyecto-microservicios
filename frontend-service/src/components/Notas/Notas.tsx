@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { getNotas } from "../../services/UserServices";
+import { getNotas, deleteNotaById, agregarNuevaNota } from "../../services/UserServices";
 import './Notas.css';
 
+interface NotaCreada{
+    contenido: string,
+    instanteCreacion: Date,
+    ultimaModificacion: Date, 
+} // esta interface se usa cuando creamos una nota -> ya que el id se crea en el back.
 interface Nota{
     id: number,
     contenido: string,
+    instanteCreacion: Date,
     ultimaModificacion: Date, 
-
 }
 const Notas: React.FC = () => {
     const [notas,setNotas] = useState<Nota[]>([]);
@@ -21,16 +26,34 @@ const Notas: React.FC = () => {
         }
         fetchNotas();
     },[])
-    const agregarNota = () => {
-        if(nuevaNota.trim()){ //si el usuario no ingresó nada, entonces este .trim() retorna "" y es tomado como falso.
-            setNotas([...notas, { id: Date.now(), contenido: nuevaNota, ultimaModificacion: new Date() }]);
-            setNuevaNota("");   
-        } 
+    const agregarNota = async () => {
+        try{
+            if(nuevaNota.trim()){ //si el usuario no ingresó nada, entonces este .trim() retorna "" y es tomado como falso.
+                const notaCreada: NotaCreada = {
+                    contenido: nuevaNota,
+                    instanteCreacion:new Date(),
+                    ultimaModificacion: new Date(),
+                }
+                const notaYaCreada: Nota = await agregarNuevaNota(notaCreada);
+
+                setNotas([...notas, notaYaCreada]);
+                setNuevaNota("");   
+            } 
+        }catch(error){
+            console.error("Error al agregar una nueva nota: ",error);
+            alert("No se pudo agregar la nota. Intenta nuevamente.");
+        }
+
     };
-    const eliminarNota = (index: number) => {
-        const nuevasNotas = [...notas]; 
-        nuevasNotas.splice(index,1);
-        setNotas(nuevasNotas);
+    const eliminarNota = async (id: number) => {
+        try{
+            await deleteNotaById(id);
+            const nuevasNotas = notas.filter( nota => nota.id != id); 
+            setNotas(nuevasNotas);
+        }catch(error){
+            console.error("Error al eliminar la nota: ",error);
+            alert("No se pudo eliminar la nota. Intenta nuevamente.");
+        }
     }
 
     return(
