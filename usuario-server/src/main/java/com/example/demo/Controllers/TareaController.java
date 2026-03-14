@@ -1,22 +1,43 @@
 package com.example.demo.Controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Auth.JwtUtil;
+import com.example.demo.Entities.Tarea;
 import com.example.demo.Services.TareaService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
+@RequestMapping("/tareas")
 public class TareaController {
+    @Autowired
+    private JwtUtil jwtUtil;
     @Autowired
     private TareaService tareaService;
 
-    @GetMapping("/tareas")
-    public ResponseEntity<?> getTareas(){
+    @GetMapping
+    public ResponseEntity<?> getTareas(HttpServletRequest request){
         try{
-            return ResponseEntity.ok(tareaService.getTareas());
+            String authHeader = request.getHeader("Authorization");
+            System.out.println("Authorization: " + authHeader);
+
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+            String token = authHeader.replace("Bearer ", ""); 
+            String username = jwtUtil.extractUsername(token);
+
+            List<Tarea> tareas = tareaService.getTareasByUsername(username);
+            return ResponseEntity.ok(tareas);
+
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
         }
