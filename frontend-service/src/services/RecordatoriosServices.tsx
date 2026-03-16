@@ -4,8 +4,9 @@ const API_URL = 'http://localhost:8090';
 
 export const getActividades = async () => {
     try{
+        const id = localStorage.getItem("id");
         const token = localStorage.getItem("token");
-        const response = await axios.get(API_URL+"/actividades",{
+        const response = await axios.get(API_URL+"/actividades/"+id,{
             headers:{
                 Authorization: `Bearer ${token}`
             }

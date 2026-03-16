@@ -6,6 +6,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.Entities.User;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
@@ -23,7 +25,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
-    public String generateToken(CustomUserDetails userDetails) {
+    public String generateToken(User userDetails) {
         return Jwts.builder()
             .setSubject(userDetails.getUsername())
             .claim("id",userDetails.getId())
@@ -43,7 +45,7 @@ public class JwtUtil {
                 .getSubject();
     }
 
-    public boolean isTokenValid(String token, CustomUserDetails userDetails) {
+    public boolean isTokenValid(String token, User userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
