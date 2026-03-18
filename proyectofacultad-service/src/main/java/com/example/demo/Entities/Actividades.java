@@ -28,13 +28,13 @@ public abstract class Actividades {
     private Double hora;
     @ManyToOne // Relación con la entidad Materia
     @JoinColumn(name = "materia_id", nullable = true) // Nombre de la columna FK
-    private Materia nombreMateria;
+    private Materia materia;
     public Actividades(){}
-    public Actividades(String descripcion, LocalDate fecha, Double hora, Materia nombreMateria) {
+    public Actividades(String descripcion, LocalDate fecha, Double hora, Materia materia) {
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.hora = hora;
-        this.nombreMateria = nombreMateria;
+        this.materia = materia;
     }
 
     public int getId() {
@@ -61,11 +61,11 @@ public abstract class Actividades {
     public void setHora(Double hora) {
         this.hora = hora;
     }
-    public Materia getNombreMateria() {
-        return nombreMateria;
+    public Materia getMateria() {
+        return materia;
     }
-    public void setNombreMateria(Materia nombreMateria) {
-        this.nombreMateria = nombreMateria;
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     } 
 
     

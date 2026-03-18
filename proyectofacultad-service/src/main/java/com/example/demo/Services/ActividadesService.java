@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Entities.Actividades;
 import com.example.demo.Exceptions.*;
 import com.example.demo.Repositories.ActividadesRepository;
+
 import java.util.*;
 import java.util.stream.Collectors;
+
 @Service
 public class ActividadesService {
     @Autowired
@@ -48,5 +50,10 @@ public class ActividadesService {
         }catch(Exception e){
             throw new DeletingActividadException("No se ha podido eliminar la actividad.");
         }
+    }
+
+    public List<Actividades> findByUsuarioId(Long id){
+        List<Actividades> actividades = actividadesRepository.findByUsuarioId(id);
+        return actividades;
     }
 }

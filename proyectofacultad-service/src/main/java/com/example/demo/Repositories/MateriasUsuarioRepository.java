@@ -6,5 +6,4 @@ import com.example.demo.Entities.MateriasUsuario;
 
 @Repository
 public interface MateriasUsuarioRepository extends JpaRepository<MateriasUsuario,Long>{
-      
 }

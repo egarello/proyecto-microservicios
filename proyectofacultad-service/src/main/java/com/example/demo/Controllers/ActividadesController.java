@@ -1,7 +1,9 @@
 package com.example.demo.Controllers;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.demo.Services.ActividadesService;
 import com.example.demo.Services.MateriaService;
 import com.example.demo.Entities.Actividades;
@@ -95,5 +99,11 @@ public class ActividadesController {
         }catch(Exception e){
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/mis-actividades")
+    public ResponseEntity<?> getActividadesUsuario(@RequestHeader("X-User-Id") Long idUser){
+        List<Actividades> actividades = actividadesService.findByUsuarioId(idUser);
+        return ResponseEntity.ok(actividades);
     }
 }

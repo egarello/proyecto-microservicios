@@ -1,6 +1,6 @@
 package com.example.demo.Exceptions;
 
-public class NullActividadesException extends Exception {
+public class NullActividadesException extends RuntimeException {
     public NullActividadesException(String e){
         super(e);
     }

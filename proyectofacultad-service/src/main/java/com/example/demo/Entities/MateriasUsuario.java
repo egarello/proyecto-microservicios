@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,9 +20,10 @@ public class MateriasUsuario {
     @Column(name= "anio_cursado") //año en que el alumno cursa la materia
     private Integer anioCursado;
     private String estado;
-    @OneToOne
-    @JoinColumn(name="materia_id")
+    @ManyToOne
+    @JoinColumn(name="materia_id", nullable=false)
     private Materia materia;
+    
     public Long getId() {
         return id;
     }

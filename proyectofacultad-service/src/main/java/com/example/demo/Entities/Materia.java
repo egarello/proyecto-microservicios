@@ -14,13 +14,13 @@ public class Materia {
     private String nombre;
     private String descripcion;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "profesor_id",nullable = true)
-    private Profesor profesor;
-
-    @JsonIgnore //acá lo mismo. Tengo que ver si es necesario acá o en la clase Actividades.
-    @OneToMany(mappedBy = "nombreMateria", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(mappedBy = "materia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Actividades> actividades;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="materia", cascade = CascadeType.ALL, orphanRemoval=true)
+    private List<AsignacionProfesor> asignacionProfesores;
 
     public int getId() {
         return id;
@@ -40,17 +40,19 @@ public class Materia {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Profesor getProfesor() {
-        return profesor;
-    }
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
-    }
     public List<Actividades> getActividades() {
         return actividades;
     }
     public void setActividades(List<Actividades> actividades) {
         this.actividades = actividades;
     } 
-    
+
+    public List<AsignacionProfesor> getAsignacionProfesores() {
+        return asignacionProfesores;
+    }
+
+    public void setAsignacionProfesores(List<AsignacionProfesor> asignacionProfesores) {
+        this.asignacionProfesores = asignacionProfesores;
+    }
+
 }

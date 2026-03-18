@@ -16,7 +16,6 @@ import com.example.demo.Exceptions.NullMateriasException;
 import com.example.demo.Services.MateriaService;
 import java.util.*;
 
-@CrossOrigin(origins = "http://localhost:5173") // Permite el acceso desde tu frontend
 @RestController
 public class MateriaController {
     @Autowired
@@ -63,11 +62,6 @@ public class MateriaController {
             Materia materia = new Materia();
             materia.setNombre((String) payload.get("nombre"));
             materia.setDescripcion((String) payload.get("descripcion"));
-
-            Long profesorId = Long.valueOf(payload.get("profesor_id").toString());
-            Profesor profesor = profesorController.getProfesorById(profesorId)
-                    .orElseThrow(() -> new RuntimeException("Profesor no encontrado"));
-            materia.setProfesor(profesor);
             
             return ResponseEntity.ok(materiaService.saveMateria(materia)); // la nueva materia es cargada.
         }catch(Exception e){
